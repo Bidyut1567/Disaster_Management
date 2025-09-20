@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Preparedness Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #1a2a6c, #2c5364, #203a43);
+            color: #fff;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+       
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
+        }
+
+        p {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+       
+        .training-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+        .training-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.2),
+                rgba(255, 255, 255, 0.01)
+            );
+            transform: rotate(30deg);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .training-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .training-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #00c6ff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .training-card p {
+            text-align: left;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .training-card strong {
+            color: #00c6ff;
+        }
+
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; 
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .training-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .training-card {
+                padding: 20px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .training-card {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .training-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .training-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .training-card:nth-child(4) {
+            animation-delay: 0.45s;
+        }
+
+        .training-card:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #00c6ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>🌏 Disaster Preparedness Training</h2>
+    <p>Watch these short training videos to learn how to respond during emergencies:</p>
+
+    <div class="training-grid">
+
+     
+        <div class="training-card">
+            <h3>🫁 CPR Training</h3>
+            <p><strong>Purpose:</strong> To teach life-saving skills for responding to cardiac emergencies before medical help arrives.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/8YREVVM2n7g" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="training-card">
+            <h3>🔥 Fire Safety Drills</h3>
+            <p><strong>Purpose:</strong> To train individuals to respond quickly and safely during a fire emergency.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/C9KSFRq4rXA" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        
+        <div class="training-card">
+            <h3>🌍 Earthquake Survival Tips</h3>
+            <p><strong>Purpose:</strong> To guide individuals on how to stay safe and protect themselves during an earthquake.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/BLEPakj1YTY" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="training-card">
+            <h3>🌊 Flood Survival Drill</h3>
+            <p><strong>Purpose:</strong> To prepare individuals to respond safely during flooding to minimize risk and ensure survival.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/pi_nUPcQz_A" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="training-card">
+            <h3>👣 Stampede Survival</h3>
+            <p><strong>Purpose:</strong> To teach calm, safe, and quick escape during crowd surges.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/MSiw9ZGdtSQ" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Disaster Preparedness Training &copy; 2023 | Stay Safe, Stay Prepared</p>
+    </footer>
+</body>
+</html>

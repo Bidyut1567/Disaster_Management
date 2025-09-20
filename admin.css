@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    backdrop-filter: blur(5px);
+    background-image: url("admin.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+  }
+  
+  header {
+    background: rgba(57, 76, 96, 0.9);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-bottom: 2px solid #ffffff33;
+    animation: shineEffect 2s infinite ease-in-out;
+  }
+  
+  nav {
+    background-color: rgba(0, 85, 153, 0.9);
+    padding: 0.75rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #ffcc00;
+    text-shadow: 0 0 5px #fff;
+  }
+  
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  section {
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.3);
+  }
+  
+  h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5rem;
+    color: #e5eaef;
+    text-shadow: 0 1px 0 #fff;
+  }
+  
+  input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 0.5rem 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #005599;
+    box-shadow: 0 0 5px rgba(0, 85, 153, 0.5);
+  }
+  
+  button {
+    background-color: #003366;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color: #001f33;
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+ 
+  .grievance {
+    background: rgba(240, 240, 240, 0.6);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  
+  @keyframes shineEffect {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  header {
+    background: linear-gradient(90deg, rgba(255,255,255,0.4) 25%, rgba(0,0,0,0.2) 50%, rgba(255,255,255,0.4) 75%);
+    background-size: 200% 100%;
+    animation: shineEffect 2s infinite ease-in-out;
+  }
+  
+  button {
+    background: linear-gradient(135deg, #003366, #001f33);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-size: 200% 200%;
+    animation: shineEffect 3s infinite ease-in-out;
+  }
+  

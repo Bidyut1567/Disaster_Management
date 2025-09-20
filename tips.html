@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Survival Tips</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #1a2a6c, #2c5364, #203a43);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        
+        .text-center {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
+        }
+
+        .text-muted {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        
+        .tip-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.01)
+            );
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .tip-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(0, 198, 255, 0.6));
+        }
+
+        .tip-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00c6ff;
+        }
+
+       
+        .tip-card button {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .tip-card button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        
+        .tips {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .tips:not(.hidden) {
+            max-height: 1000px;
+        }
+
+        .tips ul {
+            list-style-type: none;
+            margin-bottom: 15px;
+        }
+
+        .tips h3 {
+            font-size: 1.1rem;
+            margin: 10px 0 5px 0;
+            color: #00c6ff;
+        }
+
+        .tips li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .tips li:before {
+            content: "•";
+            color: #00c6ff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tip-card {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .tip-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .tip-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .tip-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .tip-card:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .tip-card:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .tip-card:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .tip-card:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .tip-card:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .tip-card:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text-center">🛟 Survival Tips</h2>
+    <p class="text-center text-muted">Click a card to reveal survival tips for each disaster type.</p>
+
+    <div class="grid-container">
+
+       
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2976/2976625.png" alt="Earthquake">
+            <h3>🌍 Earthquake</h3>
+            <button onclick="toggleTips('eq')">View Tips</button>
+            <ul id="tips-eq" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Secure heavy furniture to walls.</li>
+                    <li>Keep a family emergency plan and go-bag ready.</li>
+                    <li>Practice "Drop, Cover, and Hold On."</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li><b>Indoors:</b>Get under sturdy furniture, protect your head.</li>
+                    <li><b>Outdoors:</b> Move away from buildings, trees, and power lines.</li>
+                    <li><b>In a vehicle:</b> Pull over safely and stay inside.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Expect aftershocks.</li>
+                    <li>Check for gas leaks and electrical damage.</li>
+                    <li>Listen to emergency broadcasts and stay calm.</li>
+                </ul>
+            </ul>
+        </div>
+
+       
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3079/3079165.png" alt="Flood">
+            <h3>🌊 Flood</h3>
+            <button onclick="toggleTips('flood')">View Tips</button>
+            <ul id="tips-flood" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Know your flood zone and evacuation routes.</li>
+                    <li>Keep important documents in waterproof containers.</li>
+                    <li>Elevate appliances and switch off electricity at the main breaker.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Evacuate early if instructed.</li>
+                    <li>Never walk or drive through floodwater.</li>
+                    <li>Move to higher ground immediately.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Avoid waterlogged areas — risk of electrocution and contamination.</li>
+                    <li>Disinfect everything that got wet.</li>
+                    <li>Boil drinking water until declared safe.</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/4140/4140036.png" alt="Cyclone">
+            <h3>🌀 Cyclone</h3>
+            <button onclick="toggleTips('cyclone')">View Tips</button>
+            <ul id="tips-cyclone" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Board up windows, bring loose items indoors.</li>
+                    <li>Know shelter locations and prepare emergency kits.</li>
+                    <li>Charge power banks and fill clean water containers.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Stay indoors and away from windows.</li>
+                    <li>Avoid using candles (fire risk); use flashlights instead.</li>
+                    <li>Monitor news and alerts closely.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Watch out for fallen power lines and flooded roads.</li>
+                    <li>Don't drink tap water unless declared safe.</li>
+                    <li>Contact family and let them know you're safe.</li>
+                </ul>
+            </ul>
+        </div>
+        
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1000/1000943.png" alt="Stampede">
+            <h3>👣 Stampede</h3>
+            <button onclick="toggleTips('stampade')">View Tips</button>
+            <ul id="tips-stampade" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Avoid overcrowded areas when possible.</li>
+                    <li>Know where exits are when you enter.</li>
+                    <li>Keep hydrated and wear light clothing and secure footwear.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Stay on your feet. Fall = High risk.</li>
+                    <li>Don't push or resist the flow – move diagonally to safety.</li>
+                    <li>Protect your chest with arms like a boxer.</li>
+                    <li>If you fall, curl into a ball, cover your head and try to get up quickly.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Help others if you are safe.</li>
+                    <li>Move to open areas quickly.</li>
+                    <li>Seek first aid for bruises, crush injuries, or panic attacks.</li>
+                </ul>
+            </ul>
+        </div>
+
+        
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5995/5995622.png" alt="Fire">
+            <h3>🔥 Fire / Wildfire</h3>
+            <button onclick="toggleTips('fire')">View Tips</button>
+            <ul id="tips-fire" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Clear dry vegetation around your home.</li>
+                    <li>Install smoke alarms and fire extinguishers.</li>
+                    <li>Prepare a "go-bag" with essentials.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Cover mouth and nose with a cloth (to avoid smoke).</li>
+                    <li>Follow evacuation orders immediately.</li>
+                    <li>Crawl low under smoke indoors.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Do not return until officials say it's safe.</li>
+                    <li>Watch for flare-ups or smoldering debris.</li>
+                    <li>Get medical help if breathing difficulty occurs.</li>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/4151/4151028.png" alt="Thunderstorm">
+            <h3>⛈ Thunderstorm</h3>
+            <button onclick="toggleTips('storm')">View Tips</button>
+            <ul id="tips-storm" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Avoid open fields and metal objects.</li>
+                    <li>Unplug electronics.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Stay indoors and away from windows.</li>
+                    <li>Avoid water usage (don't bathe or wash).</li>
+                    <li>If outside, squat low with minimal ground contact.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Watch for downed power lines.</li>
+                    <li>Stay away from waterlogged areas.</li>
+                </ul>
+            </ul>
+        </div>
+
+       
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/2787/2787053.png" alt="Pandemic">
+            <h3>🦠 Pandemic/Disease Outbreak</h3>
+            <button onclick="toggleTips('pandemic')">View Tips</button>
+            <ul id="tips-pandemic" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Maintain hygiene habits: handwashing, mask use.</li>
+                    <li>Store necessary medical supplies.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Follow public health guidance.</li>
+                    <li>Avoid crowded places.</li>
+                    <li>Stay isolated if sick.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Continue hygiene and vaccinations.</li>
+                    <li>Be mentally supportive of others in recovery.</li>
+                    <li>Stay informed about new outbreaks.</li>
+                </ul>
+            </ul>
+        </div>
+
+        
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3208/3208726.png" alt="Heatwave">
+            <h3>☀ Heatwave</h3>
+            <button onclick="toggleTips('heatwave')">View Tips</button>
+            <ul id="tips-heatwave" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Stay hydrated and wear light clothing.</li>
+                    <li>Know locations of cooling shelters.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Avoid outdoor activities during peak heat.</li>
+                    <li>Drink water often — even if not thirsty.</li>
+                    <li>Use wet cloths and fans to cool down.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Monitor for heat stroke symptoms (dizziness, confusion).</li>
+                    <li>Continue staying cool as temperatures may remain high.</li>
+                </ul>
+            </ul>
+        </div>
+
+       
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/4534/4534942.png" alt="Extreme cold">
+            <h3>❄ Extreme Cold</h3>
+            <button onclick="toggleTips('cold')">View Tips</button>
+            <ul id="tips-cold" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Stock up on food, water, blankets, and batteries.</li>
+                    <li>Insulate home and pipes.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Stay indoors; if outside, wear layered clothing.</li>
+                    <li>Avoid overexertion — can cause heart strain.</li>
+                    <li>If in a car, stay inside and run heater periodically.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Check on neighbors and elderly.</li>
+                    <li>Beware of ice on roads and sidewalks.</li>
+                    <li>Don't use gas stoves for heating — risk of CO poisoning.</li>
+                </ul>
+            </ul>
+        </div>
+
+       
+        <div class="tip-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/3068/3068846.png" alt="Landslide">
+            <h3>🪨 Landslide</h3>
+            <button onclick="toggleTips('landslide')">View Tips</button>
+            <ul id="tips-landslide" class="tips hidden">
+                <ul>
+                    <h3><strong>Before:</strong></h3>
+                    <li>Avoid building on slopes.</li>
+                    <li>Watch for cracks in ground or leaning trees.</li>
+                    <li>Keep emergency kit ready and stay updated on weather alerts.</li>
+                </ul>
+                <ul>
+                    <h3><strong>During:</strong></h3>
+                    <li>Move away from the path of the slide.</li>
+                    <li>Go to higher ground quickly.</li>
+                    <li>Avoid roads near hills or flowing debris.</li>
+                </ul>
+                <ul>
+                    <h3><strong>After:</strong></h3>
+                    <li>Stay away from the area until safe.</li>
+                    <li>Report damaged structures or utility lines.</li>
+                    <li>Help others if safe and call emergency services.</li>
+                </ul>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTips(id) {
+            const tips = document.getElementById("tips-" + id);
+            tips.classList.toggle("hidden");
+            
+           
+            const button = tips.previousElementSibling;
+            if (tips.classList.contains("hidden")) {
+                button.textContent = "View Tips";
+            } else {
+                button.textContent = "Hide Tips";
+            }
+        }
+    </script>
+</body>
+</html>

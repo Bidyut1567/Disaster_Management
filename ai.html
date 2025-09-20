@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Scheme Suggestion</title>
+  <link rel="stylesheet" href="search with ai.css" />
+</head>
+<body>
+
+  <header>
+    <h1>AI-Based Scheme Suggestion</h1>
+    <nav>
+     <a href="index.html">Home</a>
+     <a href="dashboard.html">Dashboard</a>
+     <a href="scheme-finder.html">Find Schemes</a>
+     <a href="login.html">Login</a>
+    </nav>
+
+     </header>
+     <!DOCTYPE html>
+     <html lang="en">
+      
+    <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>AI Chatbot</title>
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.3/dist/tailwind.min.css" rel="stylesheet" />
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+     <link rel="stylesheet" href="chatbot.css" />
+    </head>
+  
+  
+  <body>
+    <div class="chatbox">
+      <div class="messages" id="messageContainer">
+        
+    </div>
+  
+      <div class="input-area">
+        <input type="text" class="input-field" id="chatInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)" />
+        <button class="send-button" onclick="handleSendClick()">Send</button>
+        <span id="spinner" class="spinner" style="display: none;"></span>
+      </div>
+    </div>
+    
+  
+    <script>
+      async function getAIResponse(prompt) {
+        try {
+          const response = await fetch("https://backend.buildpicoapps.com/aero/run/llm-api?pk=v1-Z0FBQUFBQm4tcjlnTGVsTnhkeXNhcG9QNGRrNG5MY2MxbzBuOTdpWTVTZ2RDMnF2UHhtLVBUWWd3RDFhOUdHb3MzTlo2N2xtalNkQkdKanp1SmlXZkwydDl1NEJfRVVCdGc9PQ==", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+          });
+  
+          const data = await response.json();
+          return data.status === "success" ? data.text : "There was an error processing the AI request.";
+        } catch (error) {
+          console.error("Network error:", error);
+          return "Network error. Please try again.";
+        }
+      }
+  
+      async function getImageResponse(prompt) {
+        try {
+          const response = await fetch("https://backend.buildpicoapps.com/aero/run/image-generation-api?pk=v1-Z0FBQUFBQm4tci1IM1VPQ3A1ZGtIOUgzTFRfRDhlTG9tbWxSb0hrWERuT1dROUlJb2dBMEFSdERGWTlOMUE3SWhoWUptV0RLYmgxeVdBUXJoXy1IbjRKWFJXdTZTb2N5U0E9PQ==", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt })
+          });
+  
+          const data = await response.json();
+          return data.status === "success" ? data.imageUrl : "There was an error generating the image.";
+        } catch (error) {
+          console.error("Network error:", error);
+          return "Network error. Please try again.";
+        }
+      }
+  
+      function createMessageElement(content, isUser = false, isImage = false) {
+        let messageElem = document.createElement('div');
+        messageElem.classList.add('mb-4', 'p-4', 'rounded-lg', isUser ? 'bg-blue-500' : (isImage ? 'bg-transparent' : 'bg-gray-700'));
+  
+        if (isImage) {
+          let imgElem = document.createElement('img');
+          imgElem.src = content;
+          imgElem.alt = "Generated Image";
+          imgElem.classList.add('w-full', 'h-auto');
+          messageElem.appendChild(imgElem);
+        } else {
+          messageElem.innerHTML = content;
+        }
+  
+        return messageElem;
+      }
+  
+      async function handleKeyPress(e) {
+        if (e.key === 'Enter') {
+          await processMessage();
+        }
+      }
+  
+      async function handleSendClick() {
+        await processMessage();
+      }
+  
+      async function processMessage() {
+        const inputField = document.getElementById('chatInput');
+        const userInput = inputField.value.trim();
+        if (!userInput) return;
+  
+        const messageContainer = document.getElementById('messageContainer');
+        messageContainer.appendChild(createMessageElement(userInput, true));
+        inputField.value = '';
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+  
+        const spinner = document.getElementById('spinner');
+        spinner.style.display = 'inline-block';
+  
+        let aiResponse;
+        if (userInput.toLowerCase().startsWith("create an image")) {
+          const prompt = userInput.replace("create an image", "").trim();
+          aiResponse = await getImageResponse(prompt);
+          messageContainer.appendChild(createMessageElement(aiResponse, false, true));
+        } else {
+          aiResponse = await getAIResponse(userInput);
+          messageContainer.appendChild(createMessageElement(aiResponse));
+        }
+  
+        spinner.style.display = 'none';
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      }
+    </script>
+  </body>
+  
+  </html>
+  
+
+   </body>
+</html>

@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 1s ease-in;
+    background-image: url("pasport.webp");
+    background-size: cover;
+    background-position: center;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 2; }
+  }
+  
+ 
+  header {
+    background: linear-gradient(to right, #1d0894, #00838f);
+    color: white;
+    padding: 26px 15px;
+    width: 100%;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  
+  .filters {
+    background: rgba(236, 235, 235, 0.25);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.2), 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    animation: slideUp 1s ease-out;
+    margin-bottom: 30px;
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  .filters h2 {
+    color: #034f46;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  select, input[type="number"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-top: 5px;
+    width: 100%;
+  }
+  
+  button {
+    background: linear-gradient(to right, #370079, #004d40);
+    color: white;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    transform: rotate(25deg);
+    animation: shine 2.5s infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(25deg);
+    }
+    100% {
+      transform: translateX(100%) rotate(25deg);
+    }
+  }
+  
+  button:hover {
+    background: linear-gradient(to right, #004d40, #00251a);
+    transform: scale(1.05);
+  }
+  
+  
+  .scheme-results {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .scheme-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeUp 0.8s ease-out;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .scheme-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .scheme-card h3 {
+    color: #00796b;
+    font-size: 1.5rem;
+  }
+  
+  .scheme-card p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .scheme-card a {
+    color: #00796b;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .scheme-card a:hover {
+    color: #004d40;
+  }
+  
+  
+  footer {
+    margin-top: auto;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  

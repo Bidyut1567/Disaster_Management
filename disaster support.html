@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sikkim Emergency Response Portal</title>
+    <link rel="stylesheet" href="disaster suppoet.css" />
+</head>
+<body>
+  <header>
+    <h1>Sikkim Emergency Response Portal</h1>
+  </header>
+
+  <section class="report-section">
+    <h2> Report Damage or Request Help</h2>
+    <form id="report-form" onsubmit="submitReport(event)">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="text" name="address" placeholder="Address" required />
+      <input type="text" name="contact" placeholder="Phone / Email" required />
+      <select name="language" required>
+        <option value="">Preferred Language</option>
+        <option value="English">English</option>
+        <option value="Hindi">Hindi</option>
+        <option value="Nepali">Nepali</option>
+        <option value="Bengali">Bengali</option>
+      </select>
+      <select name="disaster" required>
+        <option value="">Disaster Type</option>
+        <option>Flood</option>
+        <option>Landslide</option>
+        <option>Earthquake</option>
+        <option>Heavy Rainfall</option>
+        <option>Road Blockage</option>
+        <option>Building Collapse</option>
+        <option>Power Outage</option>
+        <option>Forest Fire</option>
+      </select>
+      <textarea name="description" placeholder="Brief description of the situation..." rows="4" required></textarea>
+      <button type="submit">Submit Report</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Sikkim Emergency Response Portal</p>
+  </footer>
+
+  <script>
+    function submitReport(event) {
+      event.preventDefault();
+      const form = document.getElementById("report-form");
+      const formData = new FormData(form);
+      let reportDetails = "📋 Report Summary:\n";
+
+    
+      alert("✅ Report Submitted!\n\n" + reportDetails);
+      form.reset();
+    }
+  </script>
+</body>
+</html>

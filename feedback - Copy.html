@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>💬 Give Your Feedback</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="dashboard.html">📋 Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="feedback-form">
+      <h2>We value your feedback!</h2>
+      <textarea id="feedbackText" rows="6" placeholder="Write your feedback here..."></textarea>
+      <br />
+      <button onclick="submitFeedback()">Submit Feedback</button>
+      <p id="feedbackMsg" style="color: green;"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Government Scheme Portal</p>
+  </footer>
+
+  <script>
+    function submitFeedback() {
+      const feedback = document.getElementById("feedbackText").value.trim();
+      const user = localStorage.getItem("currentUser");
+
+      if (!user) {
+        alert("Please log in to submit feedback.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      if (feedback === "") {
+        document.getElementById("feedbackMsg").textContent = "❌ Please write something!";
+        return;
+      }
+
+      const feedbackData = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+      feedbackData.push({
+        user: user,
+        message: feedback,
+        time: new Date().toLocaleString()
+      });
+
+      localStorage.setItem("feedbacks", JSON.stringify(feedbackData));
+      document.getElementById("feedbackMsg").textContent = "✅ Thank you for your feedback!";
+      document.getElementById("feedbackText").value = "";
+    }
+  </script>
+</body>
+</html>

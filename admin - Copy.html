@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - Sarkari Yojana Portal</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="admin.html">Admin Panel</a>
+    <a href="logout.html">Logout</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>📝 Post New Scheme</h2>
+      <form id="schemeForm">
+        <input type="text" placeholder="Scheme Name" required />
+        <textarea placeholder="Scheme Description" rows="4" required></textarea>
+        <input type="text" placeholder="Eligible Age, Gender, Job, Income..." required />
+        <button type="submit">Post Scheme</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>📩 View Feedback</h2>
+      <div class="grievance">
+        <strong>User:</strong> user@example.com <br />
+        <strong>Feedback:</strong> Great initiative, but add more schemes for students.
+      </div>
+      <div class="grievance">
+        <strong>User:</strong> farmer_22@gmail.com <br />
+        <strong>Feedback:</strong> Application not working on mobile.
+      </div>
+    </section>
+
+    <section>
+      <h2>🚨 Grievance Complaints</h2>
+      <div class="grievance">
+        <strong>Complaint:</strong> Ration card not delivered <br />
+        <textarea placeholder="Reply here..."></textarea>
+        <button>Send Reply</button>
+      </div>
+      <div class="grievance">
+        <strong>Complaint:</strong> PMAY delay in approval <br />
+        <textarea placeholder="Reply here..."></textarea>
+        <button>Send Reply</button>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

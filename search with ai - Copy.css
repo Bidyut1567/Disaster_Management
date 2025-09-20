@@ -1,0 +1,210 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 1s ease-in;
+    background-image: url("ai.jpeg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+ 
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(25deg);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%) rotate(25deg);
+      opacity: 0;
+    }
+  }
+  
+
+  header {
+    background: linear-gradient(to right, #020a33, #00838f);
+    color: white;
+    padding: 25px 15px;
+    width: 100%;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transform: skewX(-25deg);
+    animation: shine 3s infinite;
+  }
+  
+  
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+
+  main {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  form {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: slideUp 1s ease-out;
+    overflow: hidden;
+  }
+  
+  form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transform: skewX(-25deg);
+    animation: shine 3s infinite;
+  }
+  
+
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #ecf1f1;
+  }
+  
+  label {
+    font-size: 1.1rem;
+    color: #f4eeee;
+    margin-top: 15px;
+    display: block;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  button[type="submit"] {
+    background: linear-gradient(to right, #140325, #004d40);
+    color: white;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transform: skewX(-25deg);
+    animation: shine 3s infinite;
+  }
+  
+  button[type="submit"]:hover {
+    background: linear-gradient(to right, #004d40, #00251a);
+    transform: scale(1.05);
+  }
+  
+  #suggestions {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.7));
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  #suggestions ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #suggestions li {
+    font-size: 1.1rem;
+    color: #cee1df;
+    margin-bottom: 10px;
+  }
+  
+  #suggestions li:hover {
+    color: #ecf3f2;
+    transform: scale(1.05);
+    transition: color 0.3s ease;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: auto;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  

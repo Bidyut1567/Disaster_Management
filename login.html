@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+</head>
+
+
+<body>
+    <hrader></hrader>
+    <h1></h1>
+    <nav>
+      
+        <a href="login.html"></a>
+    </nav>
+
+
+
+
+
+  <div class="form-container">
+    <h2> Login</h2>
+    <input type="text" id="loginUsername" placeholder="Enter username" />
+    <input type="password" id="loginPassword" placeholder="Enter password" />
+    <div class="forgot"><a href="#" onclick="forgotPassword()">Forgot Password?</a></div>
+    <button onclick="login()">Login</button>
+    <p id="message" style="color:red;"></p>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("loginUsername").value.trim();
+      const pass = document.getElementById("loginPassword").value.trim();
+      const storedPass = localStorage.getItem("user_" + user);
+
+      if (storedPass === pass) {
+        localStorage.setItem("currentUser", user);
+        document.getElementById("message").textContent = "✅ Login successful! Redirecting...";
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1000);
+      } else {
+        document.getElementById("message").textContent = "❌ Invalid username or password.";
+      }
+    }
+
+    function forgotPassword() {
+      const username = prompt("Enter your username:");
+      const storedPass = localStorage.getItem("user_" + username);
+      if (storedPass) {
+        alert("🔑 Your password is: " + storedPass);
+      } else {
+        alert("❌ Username not found.");
+      }
+    }
+  </script>
+</body>
+</html>

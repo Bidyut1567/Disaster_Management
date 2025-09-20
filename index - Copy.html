@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disaster Management Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  
+  <header>
+    <h1>Disaster Awareness Platform</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="disaster.html">Disaster Support</a>
+      <a href="chatbot.html">AI Chat</a>
+      <a href="quiz.html">Quiz</a>
+    
+      <a href="tips.html">Survival Tips</a>
+      <a href="training.html">Training</a>
+      <a href="register.html">Register/Login</a>
+    </nav>
+  </header>
+
+
+  <main>
+    
+    <section class="hero">
+      <h2>Building Safer Campuses with Disaster Awareness & Preparedness</h2>
+      <p>Learn, practice, and stay prepared for natural disasters with digital training, virtual drills, and real-time alerts.</p>
+    </section>
+
+   
+    <section class="ai">
+      <h2>Chat with Disaster Buddy</h2>
+      <a class="btn" href="ai.html">Search your queries with AI</a>
+    </section>
+
+   
+    <section class="weather-widget">
+      <div class="container">
+        <div class="app-logo">
+          <h1><i class="fas fa-cloud-sun"></i> WeatherVoice</h1>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Enter city name..." id="locationInput">
+          <button onclick="getWeather()"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="weatherResult" class="weather-info">
+          <p>Search a city to get weather data</p>
+        </div>
+        <button class="voice-btn" onclick="speakWeather()"><i class="fas fa-volume-up"></i> Speak Weather Report</button>
+      </div>
+    </section>
+
+    
+    <section class="featured-schemes">
+      <div class="scheme-card">
+        <h3>📌 Disaster Survival Tips</h3>
+        <p>Survival tips for different types of disaster</p>
+        <a href="tips.html">Explore</a>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer>
+    <p>Disaster Management Dept.</p>
+  </footer>
+
+ 
+  <script>
+    const apiKey = "69fa3edcd3d94c72a80190733251104";
+    let latestWeather = null;
+
+    function getWeather() {
+      const location = document.getElementById("locationInput").value.trim();
+      if (!location) {
+        alert("Please enter a location.");
+        return;
+      }
+
+      const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(location)}&aqi=yes`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error("Location not found.");
+          return response.json();
+        })
+        .then(data => {
+          const { name, region, country } = data.location;
+          const { temp_c, condition, humidity, wind_kph, air_quality } = data.current;
+
+          latestWeather = { name, region, country, temp_c, condition, humidity, wind_kph, air_quality };
+
+          let airQualityText = air_quality && air_quality.pm2_5 ? air_quality.pm2_5.toFixed(2) : "N/A";
+
+          const resultDiv = document.getElementById("weatherResult");
+          resultDiv.innerHTML = `
+            <h2>Weather in ${name}, ${region}, ${country}</h2>
+            <p><strong>Temperature:</strong> ${temp_c}°C</p>
+            <p><strong>Condition:</strong> ${condition.text}</p>
+            <p><strong>Humidity:</strong> ${humidity}%</p>
+            <p><strong>Wind Speed:</strong> ${wind_kph} kph</p>
+            <p><strong>Air Quality Index (PM2.5):</strong> ${airQualityText}</p>
+          `;
+          resultDiv.classList.add("show");
+        })
+        .catch(error => {
+          document.getElementById("weatherResult").innerHTML = `<p>Error: ${error.message}</p>`;
+        });
+    }
+
+    function speakWeather() {
+      if (!latestWeather) {
+        alert("Please search for weather first.");
+        return;
+      }
+      if (!("speechSynthesis" in window)) {
+        alert("Speech synthesis not supported in your browser.");
+        return;
+      }
+
+      const { name, region, country, temp_c, condition, humidity, wind_kph, air_quality } = latestWeather;
+      const pm25 = air_quality && air_quality.pm2_5 ? air_quality.pm2_5.toFixed(2) : "N/A";
+
+      const text = `The weather in ${name}, ${region}, ${country} is ${temp_c} degrees Celsius with ${condition.text}. 
+      Humidity is ${humidity} percent, wind speed is ${wind_kph} kilometers per hour, 
+      and the air quality index PM 2.5 is ${pm25}.`;
+
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = "en-US";
+      speech.volume = 1;
+      speech.rate = 1;
+      speech.pitch = 1;
+      window.speechSynthesis.speak(speech);
+    }
+  </script>
+</body>
+</html>

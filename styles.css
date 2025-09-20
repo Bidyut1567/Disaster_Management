@@ -1,0 +1,226 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 2rem;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.6);
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #eee;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00c6ff;
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  margin: 2rem auto;
+  width: 85%;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  animation: glossyPulse 5s infinite alternate;
+}
+
+.hero h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(0,198,255,0.6);
+}
+
+@keyframes glossyPulse {
+  from { background: rgba(255, 255, 255, 0.05); }
+  to { background: rgba(255, 255, 255, 0.15); }
+}
+
+
+.ai {
+  text-align: center;
+  margin: 2rem auto;
+  width: 70%;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 20px rgba(0,198,255,0.3), 0 0 15px rgba(0,198,255,0.4);
+}
+
+.ai h2 {
+  margin-bottom: 1rem;
+  color: #00c6ff;
+}
+
+.ai .btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.ai .btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00c6ff;
+}
+
+.weather-widget {
+  margin: 2rem auto;
+  width: 85%;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.app-logo h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #00c6ff;
+  text-shadow: 0 0 10px #00c6ff;
+}
+
+.search-box {
+  margin-bottom: 1rem;
+}
+
+.search-box input {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 20px;
+  width: 70%;
+  max-width: 300px;
+  text-align: center;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-box button {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 50%;
+  background: #00c6ff;
+  color: #fff;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+.weather-info {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.weather-info.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.voice-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.voice-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #00c6ff;
+}
+
+
+.featured-schemes {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.scheme-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.scheme-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,198,255,0.5);
+}
+
+.scheme-card h3 {
+  margin-bottom: 0.8rem;
+  color: #00c6ff;
+}
+
+.scheme-card a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  font-size: 0.9rem;
+  color: #aaa;
+}

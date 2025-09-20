@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📋 User Dashboard</h1>
+    <nav>
+      <a href="index.html"> Home</a>
+      <button onclick="logout()"> Logout</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="user-info">
+      <h2>Welcome, <span id="username">User</span>!</h2>
+    </section>
+
+    <section class="applied-schemes">
+      <h2>📌 Applied Schemes</h2>
+      <div id="schemeList">
+        <p>Loading your schemes...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Sikkim Government Scheme Portal</p>
+  </footer>
+
+  <script>
+    const currentUser = localStorage.getItem("currentUser");
+    const usernameSpan = document.getElementById("username");
+    const schemeList = document.getElementById("schemeList");
+
+    if (!currentUser) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+    } else {
+      usernameSpan.textContent = currentUser;
+
+      const appliedSchemes = JSON.parse(localStorage.getItem("appliedSchemes_" + currentUser)) || [];
+
+      if (appliedSchemes.length === 0) {
+        schemeList.innerHTML = "<p>You haven’t applied for any scheme yet.</p>";
+      } else {
+        schemeList.innerHTML = "";
+        appliedSchemes.forEach(s => {
+          schemeList.innerHTML += `
+            <div class="scheme-card">
+              <h3>${s.name}</h3>
+              <p>Application ID: ${s.id}</p>
+            </div>
+          `;
+        });
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
